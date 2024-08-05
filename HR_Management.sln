@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{4E52E6AA-66F5-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.Application", "HR_Management.Application\HR_Management.Application.csproj", "{791E3165-E7A8-437C-B480-661CF3E72033}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management_Domain", "HR_Management_Domain\HR_Management_Domain.csproj", "{6667A734-B002-4AB3-9880-EF5D873E9047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.Domain", "HR_Management_Domain\HR_Management.Domain.csproj", "{6667A734-B002-4AB3-9880-EF5D873E9047}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.Infrastructure", "HR_Management.Infrastructure\HR_Management.Infrastructure.csproj", "{F3EBF377-91FA-4F9C-AC0F-219754434209}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.Application.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.MVC", "HR_Management.MVC\HR_Management.MVC.csproj", "{D6510C52-0E4C-4B0B-BE01-679B1DE6D722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Management.Identity", "HR.Management.Identity\HR.Management.Identity.csproj", "{595B09B9-8CF0-4BDB-8736-0CDCB2ECD434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.Management.Identity", "HR.Management.Identity\HR.Management.Identity.csproj", "{595B09B9-8CF0-4BDB-8736-0CDCB2ECD434}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

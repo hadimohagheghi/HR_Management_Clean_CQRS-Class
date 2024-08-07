@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -9,6 +10,7 @@
     <!--AutoMapper.Extensions.Microsoft.DependencyInjection-->
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
+    <!--<PackageReference Include="MediatR" Version="11.1.0" />-->
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
@@ -16,6 +18,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HR_Management_Domain\HR_Management.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\LeaveTypes\Handlers\Commands\" />
+    <Folder Include="Features\LeaveTypes\Requests\Commands\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -6,21 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DTOs\**" />
-    <EmbeddedResource Remove="DTOs\**" />
-    <None Remove="DTOs\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <!--AutoMapper.Extensions.Microsoft.DependencyInjection-->
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />
+    <!--<PackageReference Include="MediatR" Version="11.1.0" />-->
     <PackageReference Include="MediatR" Version="11.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HR_Management_Domain\HR_Management_Domain.csproj" />
+    <ProjectReference Include="..\HR_Management_Domain\HR_Management.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\LeaveAllocations\Handlers\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Requests\Commands\" />
+    <Folder Include="Features\LeaveRequests\Handlers\Commands\" />
+    <Folder Include="Features\LeaveRequests\Requests\Commands\" />
+    <Folder Include="Features\LeaveTypes\Handlers\Commands\" />
+    <Folder Include="Features\LeaveTypes\Requests\Commands\" />
   </ItemGroup>
 
 </Project>

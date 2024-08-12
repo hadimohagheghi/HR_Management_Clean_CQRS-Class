@@ -20,12 +20,6 @@ namespace HR_Management.Application.Features.LeaveTypes.Handlers.Commands
         }
         public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
-            var validator = new UpdateLeaveTypeValidator();
-            var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
-
-            if (validationResult.IsValid == false)
-                throw new ValidationException(validationResult);
-
             var leaveType = await leaveTypeRepository.Get(request.LeaveTypeDto.Id);
             mapper.Map(request.LeaveTypeDto, leaveType);
             await leaveTypeRepository.Update(leaveType);

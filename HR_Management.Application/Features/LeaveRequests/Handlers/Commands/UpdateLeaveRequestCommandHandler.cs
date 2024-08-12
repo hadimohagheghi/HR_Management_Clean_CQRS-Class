@@ -9,23 +9,29 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
     public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveRequestCommand, Unit>
     {
-        private readonly ILeaveRequestRepository leaveRequestRepository;
-        private readonly IMapper mapper;
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly IMapper _mapper;
 
         public UpdateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository,
             IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
         {
-            this.leaveRequestRepository = leaveRequestRepository;
-            this.mapper = mapper;
-            this._leaveTypeRepository = leaveTypeRepository;
+            _leaveRequestRepository = leaveRequestRepository;
+            _mapper = mapper;
         }
         public async Task<Unit> Handle(UpdateLeaveRequestCommand request, CancellationToken cancellationToken)
         {
+          
 
-            var leaveRequest = await leaveRequestRepository.Get(request.Id);
-            mapper.Map(request.LeaveRequestDto, leaveRequest);
-            await leaveRequestRepository.Update(leaveRequest);
+            var leaveRequest = await _leaveRequestRepository.Get(request.Id);
+            if (request.LeaveRequestDto != null)
+            {
+                _mapper.Map(request.LeaveRequestDto, leaveRequest);
+                await _leaveRequestRepository.Update(leaveRequest);
+            }
+            else if (request.ChangeLeaveRequestApprovealDto != null)
+            {
+                await _leaveRequestRepository.ChangeApprovalStatus(leaveRequest, request.ChangeLeaveRequestApprovealDto.Approved);
+            }
 
             return Unit.Value;
         }

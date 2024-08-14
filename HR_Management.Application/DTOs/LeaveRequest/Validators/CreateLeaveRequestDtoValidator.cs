@@ -1,11 +1,15 @@
 ﻿using FluentValidation;
+using HR_Management.Application.Persistence.Contracts;
 
 namespace HR_Management.Application.DTOs.LeaveRequest.Validators
 {
-    public class CreateLeaveRequestDtoValidator: AbstractValidator<CreateLeaveRequestsDto>
+    public class CreateLeaveRequestDtoValidator : AbstractValidator<CreateLeaveRequestsDto>
     {
-        public CreateLeaveRequestDtoValidator()
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+
+        public CreateLeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
+            _leaveTypeRepository = leaveTypeRepository;
             RuleFor(p => p.StartDate)
                 .LessThan(p => p.EndDate)
                 .WithMessage("{PropertyName} must be before {ComparisonValue}");
@@ -16,7 +20,12 @@ namespace HR_Management.Application.DTOs.LeaveRequest.Validators
 
             RuleFor(p => p.LeaveTypeId)
                 .GreaterThan(0)
-                .WithMessage("{PropertyName} does not exist.");
+            .MustAsync(async (id, token) =>
+            {
+                var leaveTypeExist = await _leaveTypeRepository.Exist(id);
+                return !leaveTypeExist;
+            })
+            .WithMessage("{PropertyName} does not exist.");
         }
     }
 }

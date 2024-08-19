@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using HR_Management.Application.Persistence.Contracts;
 using HR_Management.Domain;
+using HR_Management.Application.DTOs.LeaveRequest.Validators;
 
 namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -27,6 +28,14 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
         }
         public async Task<int> Handle(CreateLeaveRequestsCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateLeaveRequestDtoValidator(_leaveRequestRepository);
+            var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
+
+            if (validationResult.IsValid == false)
+            {
+                throw new Exception();
+            }
+
             var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequestDto);
             leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
 

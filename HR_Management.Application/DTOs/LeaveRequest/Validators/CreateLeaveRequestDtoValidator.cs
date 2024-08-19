@@ -5,13 +5,13 @@ namespace HR_Management.Application.DTOs.LeaveRequest.Validators
 {
     public class CreateLeaveRequestDtoValidator : AbstractValidator<CreateLeaveRequestsDto>
     {
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveRequestRepository _leaveRequestRepository;
 
-        public CreateLeaveRequestDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        public CreateLeaveRequestDtoValidator(ILeaveRequestRepository leaveRequestRepository)
         {
-            _leaveTypeRepository = leaveTypeRepository;
+            _leaveRequestRepository = leaveRequestRepository;
 
-            Include(new ILeaveRequestDtoValidator(_leaveTypeRepository));
+            Include(new ILeaveRequestDtoValidator(_leaveRequestRepository));
             /* RuleFor(p => p.StartDate)
                 .LessThan(p => p.EndDate)
                 .WithMessage("{PropertyName} must be before {ComparisonValue}");

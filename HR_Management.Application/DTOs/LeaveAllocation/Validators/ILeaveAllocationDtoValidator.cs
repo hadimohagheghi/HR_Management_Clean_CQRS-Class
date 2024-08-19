@@ -6,11 +6,11 @@ namespace HR_Management.Application.DTOs.LeaveAllocation.Validators
 {
     public class ILeaveAllocationDtoValidator:AbstractValidator<ILeaveAllocationDto>
     {
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-        public ILeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        public ILeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
         {
-            this._leaveTypeRepository = leaveTypeRepository;
+            this._leaveAllocationRepository = leaveAllocationRepository;
 
             RuleFor(p => p.NumberOfDays)
                 .GreaterThan(0).WithMessage("{PropertyName} must greater than {ComparisonValue}");
@@ -24,7 +24,7 @@ namespace HR_Management.Application.DTOs.LeaveAllocation.Validators
                 .GreaterThan(0)
                 .MustAsync(async (id, token) =>
                 {
-                    var leaveTypeExist = await _leaveTypeRepository.Exist(id);
+                    var leaveTypeExist = await _leaveAllocationRepository.Exist(id);
                     return !leaveTypeExist;
                 })
                 .WithMessage("{PropertyName} does not exist.");

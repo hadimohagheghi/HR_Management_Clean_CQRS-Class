@@ -5,12 +5,12 @@ namespace HR_Management.Application.DTOs.LeaveAllocation.Validators
 {
     public class UpdateLeaveAllocationDtoValidator : AbstractValidator<UpdateLeaveAllocationDto>
     {
-        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-        public UpdateLeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        public UpdateLeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
         {
-            _leaveTypeRepository = leaveTypeRepository;
-            Include(new ILeaveAllocationDtoValidator(_leaveTypeRepository));
+            _leaveAllocationRepository = leaveAllocationRepository;
+            Include(new ILeaveAllocationDtoValidator(_leaveAllocationRepository));
 
             RuleFor(p => p.Id).NotNull()
                 .WithMessage("{PropertyName} is required.");

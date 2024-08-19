@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HR_Management.Application.Exceptions
 {
-    public class ValidationException : ApplicationException
+    public class ValidationExceptions : ApplicationException
     {
 
         //public ValidationException(string message):base(message)
@@ -14,7 +14,7 @@ namespace HR_Management.Application.Exceptions
         //}
         public List<string> Errors { get; set; } = new List<string>();
 
-        public ValidationException(ValidationResult validationResult)
+        public ValidationExceptions(ValidationResult validationResult)
         {
 
             foreach (var err in validationResult.Errors)

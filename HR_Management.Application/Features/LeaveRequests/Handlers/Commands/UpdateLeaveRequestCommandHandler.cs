@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using HR_Management.Application.Persistence.Contracts;
 using HR_Management.Application.DTOs.LeaveRequest.Validators;
 using FluentValidation;
+using HR_Management.Application.Exceptions;
 
 namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -27,7 +28,9 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
 
             if (validationResult.IsValid == false)
-                throw new Exception();
+            {
+                throw new ValidationExceptions(validationResult);
+            }
 
             var leaveRequest = await _leaveRequestRepository.Get(request.Id);
             if (request.LeaveRequestDto != null)

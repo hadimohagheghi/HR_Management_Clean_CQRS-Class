@@ -4,8 +4,10 @@ using HR_Management.Application.Features.LeaveTypes.Requests.Commands;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using FluentValidation;
 using HR_Management.Application.Persistence.Contracts;
 using HR_Management.Application.DTOs.LeaveType.Validators;
+using HR_Management.Application.Exceptions;
 
 namespace HR_Management.Application.Features.LeaveTypes.Handlers.Commands
 {
@@ -26,7 +28,9 @@ namespace HR_Management.Application.Features.LeaveTypes.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
 
             if (validationResult.IsValid == false)
-                throw new Exception();
+            {
+                throw new ValidationExceptions(validationResult);
+            }
 
             var leaveType = await leaveTypeRepository.Get(request.LeaveTypeDto.Id);
             mapper.Map(request.LeaveTypeDto, leaveType);

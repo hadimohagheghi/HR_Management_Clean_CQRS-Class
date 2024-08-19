@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using HR_Management.Application.Persistence.Contracts;
 using HR_Management.Domain;
 using HR_Management.Application.DTOs.LeaveRequest.Validators;
+using HR_Management.Application.Exceptions;
 
 namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -33,7 +34,7 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationExceptions(validationResult);
             }
 
             var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequestDto);

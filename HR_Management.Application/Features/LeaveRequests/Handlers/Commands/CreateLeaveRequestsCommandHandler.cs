@@ -8,11 +8,13 @@ using HR_Management.Application.Persistence.Contracts;
 using HR_Management.Domain;
 using HR_Management.Application.DTOs.LeaveRequest.Validators;
 using HR_Management.Application.Exceptions;
+using System.Linq;
+using HR_Management.Application.Responses;
 
 namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
     public class CreateLeaveRequestsCommandHandler
-        : IRequestHandler<CreateLeaveRequestsCommand, int>
+        : IRequestHandler<CreateLeaveRequestsCommand, BaseCommandResponse>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
         private readonly IMapper _mapper;
@@ -27,20 +29,29 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
            
            
         }
-        public async Task<int> Handle(CreateLeaveRequestsCommand request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse> Handle(CreateLeaveRequestsCommand request, CancellationToken cancellationToken)
         {
+            var response = new BaseCommandResponse();
             var validator = new CreateLeaveRequestDtoValidator(_leaveRequestRepository);
             var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
 
             if (validationResult.IsValid == false)
             {
-                throw new ValidationExceptions(validationResult);
+                //throw new ValidationExceptions(validationResult);
+                response.Success = false;
+                response.Message = "Creation Failed";
+                response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
             }
 
             var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequestDto);
             leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
 
-            return leaveRequest.Id;
+
+            response.Success = true;
+            response.Message = "Creation Successful";
+            response.Id = leaveRequest.Id;
+
+            return response;
         }
     }
 }

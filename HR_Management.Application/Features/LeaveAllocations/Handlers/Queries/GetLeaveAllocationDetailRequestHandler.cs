@@ -4,7 +4,7 @@ using HR_Management.Application.Features.LeaveAllocations.Requests.Queries;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using HR_Management.Application.Persistence.Contracts;
+using HR_Management.Application.Contracts.Persistence;
 
 namespace HR_Management.Application.Features.LeaveAllocations.Handlers.Queries
 {

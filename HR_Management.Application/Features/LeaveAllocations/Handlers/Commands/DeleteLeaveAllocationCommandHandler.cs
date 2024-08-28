@@ -3,7 +3,7 @@ using HR_Management.Application.Features.LeaveAllocations.Requests.Commands;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using HR_Management.Application.Persistence.Contracts;
+using HR_Management.Application.Contracts.Persistence;
 using HR_Management.Application.Exceptions;
 using HR_Management.Domain;
 

@@ -18,12 +18,15 @@ builder.Services.ConfigureInfrastractureServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-AddSwagger(builder.Services);
 
-builder.Services.AddCors(o =>
+//AddSwagger(builder.Services);
+
+
+/*builder.Services.AddCors*/
+builder.Services.AddCors(co =>
 {
-    o.AddPolicy("CorsPolicy", b =>
-    b.AllowAnyOrigin()
+    co.AddPolicy("CorsPolicy", cp =>
+    cp.AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader()
     );
@@ -37,11 +40,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseAuthentication();
+//app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.UseCors("CorsPolicy");
 
@@ -50,6 +53,8 @@ app.MapControllers();
 
 app.Run();
 
+
+/*
 void AddSwagger(IServiceCollection services)
 {
     services.AddSwaggerGen(o =>
@@ -90,3 +95,5 @@ void AddSwagger(IServiceCollection services)
         });
     });
 }
+
+*/

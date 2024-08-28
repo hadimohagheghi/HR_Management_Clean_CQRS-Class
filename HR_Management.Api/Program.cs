@@ -1,3 +1,6 @@
+using HR_Management.Application;
+using HR_Management.Infrastructure;
+using HR_Management.Persistence;
 using Microsoft.OpenApi.Models;
 
 
@@ -8,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigurePersistenceServices(builder.Configuration);
+builder.Services.ConfigureInfrastractureServices(builder.Configuration);
 
 
 builder.Services.AddEndpointsApiExplorer();

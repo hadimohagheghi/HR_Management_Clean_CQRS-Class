@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HR_Management.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class LeaveTypesController : ControllerBase
     {
         private readonly IMediator _mediator;

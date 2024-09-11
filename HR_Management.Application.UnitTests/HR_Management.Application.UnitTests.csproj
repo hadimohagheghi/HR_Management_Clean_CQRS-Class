@@ -27,9 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--<ProjectReference Include="..\HR_Management.Infrastructure\HR_Management.Infrastructure.csproj" />
+    <ProjectReference Include="..\HR_Management.Persistence\HR_Management.Persistence.csproj" />
+    <ProjectReference Include="..\HR_Management_Domain\HR_Management.Domain.csproj" />-->
     <ProjectReference Include="..\HR_Management.Infrastructure\HR_Management.Infrastructure.csproj" />
     <ProjectReference Include="..\HR_Management.Persistence\HR_Management.Persistence.csproj" />
     <ProjectReference Include="..\HR_Management_Domain\HR_Management.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LeaveTypes\" />
   </ItemGroup>
 
 </Project>

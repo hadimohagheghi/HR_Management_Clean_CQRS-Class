@@ -1,4 +1,4 @@
-﻿using HR_Management_Domain;
+﻿using HR_Management.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

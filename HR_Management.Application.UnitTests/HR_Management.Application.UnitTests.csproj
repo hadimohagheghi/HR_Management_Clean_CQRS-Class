@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <!--<PackageReference Include="Moq" Version="4.18.4" />-->
     <PackageReference Include="Moq" Version="4.18.4" />
@@ -33,10 +34,6 @@
     <ProjectReference Include="..\HR_Management.Infrastructure\HR_Management.Infrastructure.csproj" />
     <ProjectReference Include="..\HR_Management.Persistence\HR_Management.Persistence.csproj" />
     <ProjectReference Include="..\HR_Management_Domain\HR_Management.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LeaveTypes\" />
   </ItemGroup>
 
 </Project>

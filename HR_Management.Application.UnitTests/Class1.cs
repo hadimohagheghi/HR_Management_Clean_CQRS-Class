@@ -8,6 +8,7 @@ namespace HR_Management.Application.UnitTests
 {
     public class Class1
     {
+        /*
         int add(int a, int b)
         {
             return a + b;
@@ -29,6 +30,7 @@ namespace HR_Management.Application.UnitTests
             Assert.Equal(5, add(3, 2));
         }
 
-
+        */
     }
+    
 }

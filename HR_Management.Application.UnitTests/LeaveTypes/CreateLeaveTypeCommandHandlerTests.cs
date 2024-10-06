@@ -18,6 +18,9 @@ public class CreateLeaveTypeCommandHandlerTests
         _mockLeaveTypeRepository = new Mock<ILeaveTypeRepository>();
         _mockMapper = new Mock<IMapper>();
         _handler = new CreateLeaveTypeCommandHandler(_mockLeaveTypeRepository.Object, _mockMapper.Object);
+
+
+
     }
 
     [Fact]
